@@ -12,6 +12,15 @@ body {
 	position: relative;
 	-webkit-text-size-adjust: none;
 }
+
+html, body{
+	height: 100%;
+}
+
+div.sc-container{
+	height: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1;
 	font-weight: bold;
@@ -98,5 +107,5 @@ nav:not(.mm-menu) {
 
 .scrollable-list {
 	overflow-y: scroll;
-	flex:1;
+	height: 85%;
 }

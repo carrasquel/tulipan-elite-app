@@ -12,8 +12,8 @@
 
     <link href="lib/css/demo.css" rel="stylesheet" />
 </head>
-<body style="height: 100%; display:flex; flex-direction:column;">
-  <div id="my-page" style="height: 100%; display:flex; flex-direction:column;">
+<body>
+  <div id="my-page" class="sc-container">
     <div id="my-header" class="header">
       <a href="#my-menu"><span></span></a>
       Elite Schedule
@@ -25,9 +25,9 @@
         </ul>
       </nav>
     </div>
-    <div id="my-content" style="height: 100%; display:flex; flex-direction:column;">
+    <div id="my-content" class="sc-container">
       
-      <router-view style="height: 100%; display:flex; flex-direction:column;"></router-view>
+      <router-view></router-view>
     </div>
   </div>
   <script src="lib/js/tulipan.min.js"></script>
