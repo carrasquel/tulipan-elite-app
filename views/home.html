@@ -1,4 +1,4 @@
-<div>
+<div style="height: 100%; display:flex; flex-direction:column; bottom:40px">
   <b>Home template</b>
 
   <div class="tabbar footer-tabbar">
@@ -18,4 +18,10 @@
       </button>
     </label>
   </div>
+  <ons-list class="scrollable-list" style="height: 100%; display:flex; flex-direction:column;">
+    <ons-list-header>Leagues</ons-list-header>
+    <ons-list-item modifier="chevron" tappable tp-for="league in leagues">
+      {{ league.name }}
+    </ons-list-item>
+  </ons-list>
 </div>

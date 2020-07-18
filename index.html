@@ -12,8 +12,8 @@
 
     <link href="lib/css/demo.css" rel="stylesheet" />
 </head>
-<body>
-  <div id="my-page">
+<body style="height: 100%; display:flex; flex-direction:column;">
+  <div id="my-page" style="height: 100%; display:flex; flex-direction:column;">
     <div id="my-header" class="header">
       <a href="#my-menu"><span></span></a>
       Elite Schedule
@@ -25,9 +25,9 @@
         </ul>
       </nav>
     </div>
-    <div id="my-content">
+    <div id="my-content" style="height: 100%; display:flex; flex-direction:column;">
       
-      <router-view></router-view>
+      <router-view style="height: 100%; display:flex; flex-direction:column;"></router-view>
     </div>
   </div>
   <script src="lib/js/tulipan.min.js"></script>
@@ -62,14 +62,20 @@
       route: "/",
 
       data: {
-          name: "home"
+          name: "home",
+          leagues: []
       },
 
       methods: {
 
         after: function(params, query){
           console.log("home routed");
-          console.log(query);
+          this.$http.get('http://elite-schedule.net/api/leaguedata')
+          .then(function (res){
+            this.$set("leagues", res.data);
+          }, function(err){
+            console.log(err);
+          }) 
         },
       }
     });

@@ -94,4 +94,9 @@ nav:not(.mm-menu) {
 .footer-tabbar {
 	position: fixed;
 	bottom: 0;
-  }
+}
+
+.scrollable-list {
+	overflow-y: scroll;
+	flex:1;
+}
