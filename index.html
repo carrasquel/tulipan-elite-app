@@ -4,9 +4,46 @@
   <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width minimum-scale=1.0 maximum-scale=1.0 user-scalable=no" />
     <title>Elite Schedule App</title>
-      
+    <link href="lib/css/mmenu.css" rel="stylesheet" />
+    <link href="lib/css/demo.css" rel="stylesheet" />
+    
 </head>
 <body>
-
+  <div id="my-page">
+    <div id="my-header" class="header">
+      <a href="#my-menu"><span></span></a>
+      Elite Schedule
+      <nav id="my-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/teams/">Teams</a>
+          <li><a href="/standings/">Standings</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="my-content">
+      <div>
+        Content here!
+      </div>
+      <router-view></router-view>
+    </div>
+  </div>
+  <script src="lib/js/mmenu.js"></script>
+  <script src="lib/js/mmenu.polyfills.js"></script>
+  <script src="lib/js/tulipan.min.js"></script>
+  <script>
+    document.addEventListener(
+        "DOMContentLoaded", function(){
+            new Mmenu( "#my-menu", {
+                // options
+            }, {
+                // configuration
+                classNames: {
+                    selected: "active"
+                }
+            });
+        }
+    );
+  </script>
 </body>
 </html>
