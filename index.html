@@ -19,51 +19,105 @@
       Elite Schedule
       <nav id="my-menu">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/teams/">Teams</a>
-          <li><a href="/standings/">Standings</a></li>
+          <li><a onclick="navigate('#!/')" href="#!/">Home</a></li>
+          <li><a onclick="navigate('#!/teams')" href="#!/teams">Teams</a>
+          <li><a onclick="navigate('#!/standings')" href="#!/standings">Standings</a></li>
         </ul>
       </nav>
     </div>
     <div id="my-content">
-      <div>
-        <div class="tabbar footer-tabbar">
-          <label class="tabbar__item">
-            <input type="radio" name="tabbar-a" checked="checked">
-            <button class="tabbar__button">
-              <i class="tabbar__icon ion-stop"></i>
-              <div class="tabbar__label">League</div>
-            </button>
-          </label>
-        
-          <label class="tabbar__item">
-            <input type="radio" name="tabbar-a">
-            <button class="tabbar__button">
-              <i class="tabbar__icon ion-record"></i>
-              <div class="tabbar__label">My Teams</div>
-            </button>
-          </label>
-        </div>
-      </div>
+      
       <router-view></router-view>
     </div>
   </div>
+  <script src="lib/js/tulipan.min.js"></script>
+  <script src="lib/js/jquery-3.1.1.min.js"></script>
   <script src="lib/js/mmenu.js"></script>
   <script src="lib/js/mmenu.polyfills.js"></script>
-  <script src="lib/js/tulipan.min.js"></script>
+  
   <script>
-    document.addEventListener(
-        "DOMContentLoaded", function(){
-            new Mmenu( "#my-menu", {
-                // options
-            }, {
-                // configuration
-                classNames: {
-                    selected: "active"
-                }
-            });
+    var menu = new Mmenu( "#my-menu", {
+      // options
+      }, {
+      // configuration
+        classNames: {
+          selected: "active"
         }
-    );
+    });
+    function navigate(url){
+      menu.close();
+      window.location.assign(url);
+    }
   </script>
+
+  <script>
+
+    var vm1 = new Tulipan({
+
+      template: {
+          url: "views/home.html",
+          async: false
+      },
+      
+      route: "/",
+
+      data: {
+          name: "home"
+      },
+
+      methods: {
+
+        after: function(params, query){
+          console.log("home routed");
+          console.log(query);
+        },
+      }
+    });
+
+    var vm2 = new Tulipan({
+
+      template: {
+          url: "views/teams.html",
+          async: false
+      },
+      
+      route: "/teams",
+
+      data: {
+          name: "teams"
+      },
+
+      methods: {
+
+        after: function(params, query){
+          console.log("teams routed");
+          console.log(query);
+        },
+      }
+    });
+
+    var vm3 = new Tulipan({
+
+      template: {
+          url: "views/standings.html",
+          async: false
+      },
+      
+      route: "/standings",
+
+      data: {
+          name: "standings"
+      },
+
+      methods: {
+
+        after: function(params, query){
+          console.log("standings routed");
+          console.log(query);
+        },
+      }
+    });
+
+</script>
 </body>
 </html>
