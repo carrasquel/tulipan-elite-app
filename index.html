@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width minimum-scale=1.0 maximum-scale=1.0 user-scalable=no" />
     <title>Elite Schedule App</title>
     <link href="lib/css/mmenu.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="lib/css/onsenui.css">
+    <link rel="stylesheet" href="lib/css/onsen-css-components.min.css">
+    <script src="lib/js/onsenui.min.js"></script>
+
     <link href="lib/css/demo.css" rel="stylesheet" />
-    
 </head>
 <body>
   <div id="my-page">
@@ -23,7 +27,23 @@
     </div>
     <div id="my-content">
       <div>
-        Content here!
+        <div class="tabbar footer-tabbar">
+          <label class="tabbar__item">
+            <input type="radio" name="tabbar-a" checked="checked">
+            <button class="tabbar__button">
+              <i class="tabbar__icon ion-stop"></i>
+              <div class="tabbar__label">League</div>
+            </button>
+          </label>
+        
+          <label class="tabbar__item">
+            <input type="radio" name="tabbar-a">
+            <button class="tabbar__button">
+              <i class="tabbar__icon ion-record"></i>
+              <div class="tabbar__label">My Teams</div>
+            </button>
+          </label>
+        </div>
       </div>
       <router-view></router-view>
     </div>

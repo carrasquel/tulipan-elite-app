@@ -90,3 +90,8 @@ nav:not(.mm-menu) {
 .content {
 	padding: 150px 50px 50px 50px;
 }
+
+.footer-tabbar {
+	position: fixed;
+	bottom: 0;
+  }
