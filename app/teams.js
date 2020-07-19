@@ -1,18 +1,18 @@
 // teams.js
 
-var vm2 = new Tulipan({
+var teams = new Tulipan({
 
   template: {
-      url: "views/teams.html",
-      async: false
+    url: "views/teams.html",
+    async: false
   },
   
   route: "/leagues/:id",
 
   data: {
-      progress: true,
-      name: "teams",
-      teams: [],
+    progress: true,
+    name: "teams",
+    teams: [],
   },
 
   methods: {
@@ -20,7 +20,8 @@ var vm2 = new Tulipan({
     after: function(params, query){
       this.resetTeams();
       var leagueId = params.id;
-      this.progress = true,
+      this.progress = true;
+      this.$store.set('leagueId', leagueId);
       this.$http.get('http://elite-schedule.net/api/leaguedata/' + leagueId)
       .then(function (res){
         this.$set("teams", res.data.teams);
@@ -36,7 +37,7 @@ var vm2 = new Tulipan({
 
     selectTeam: function(teamId){
       console.log(teamId);
-      this.$router.navigate("#!/leagues/team/" + teamId);
+      this.$router.navigate("#!/teams/" + teamId);
     }
   }
 });

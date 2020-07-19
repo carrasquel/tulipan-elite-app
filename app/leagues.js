@@ -1,25 +1,24 @@
 // leagues.js
 
-var vm1 = new Tulipan({
+var leagues = new Tulipan({
 
   template: {
-      url: "views/home.html",
-      async: false
+    url: "views/home.html",
+    async: false
   },
   
   route: "/",
 
   data: {
-      name: "home",
-      leagues: [],
-      progress: true,
+    name: "home",
+    leagues: [],
+    progress: true,
   },
 
   methods: {
 
     after: function(params, query){
       this.progress = true;
-      console.log("home routed");
       this.$http.get('http://elite-schedule.net/api/leaguedata')
       .then(function (res){
         this.$store.set('leagues', res.data);
