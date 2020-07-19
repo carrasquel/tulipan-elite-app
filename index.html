@@ -63,20 +63,29 @@
 
       data: {
           name: "home",
-          leagues: []
+          leagues: [],
+          progress: true,
       },
 
       methods: {
 
         after: function(params, query){
+          this.progress = true;
           console.log("home routed");
           this.$http.get('http://elite-schedule.net/api/leaguedata')
           .then(function (res){
+            this.$store.set('leagues', res.data);
             this.$set("leagues", res.data);
+            this.$set("progress", false);
           }, function(err){
             console.log(err);
           }) 
         },
+        
+        selectLeague: function(leagueId){
+          this.$router.navigate("#!/leagues/" + leagueId);
+
+        }
       }
     });
 
@@ -87,18 +96,37 @@
           async: false
       },
       
-      route: "/teams",
+      route: "/leagues/:id",
 
       data: {
-          name: "teams"
+          progress: true,
+          name: "teams",
+          teams: [],
       },
 
       methods: {
 
         after: function(params, query){
-          console.log("teams routed");
-          console.log(query);
+          this.resetTeams();
+          var leagueId = params.id;
+          this.progress = true,
+          this.$http.get('http://elite-schedule.net/api/leaguedata/' + leagueId)
+          .then(function (res){
+            this.$set("teams", res.data.teams);
+            this.progress = false;
+          }, function(err){
+            console.log(err);
+          }) 
         },
+
+        resetTeams: function(){
+          this.$set("teams", {});
+        },
+
+        selectTeam: function(teamId){
+          console.log(teamId);
+          this.$router.navigate("#!/leagues/team/" + teamId);
+        }
       }
     });
 

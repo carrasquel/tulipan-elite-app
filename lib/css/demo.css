@@ -109,3 +109,12 @@ nav:not(.mm-menu) {
 	overflow-y: scroll;
 	height: 85%;
 }
+
+.scrollable-div {
+	overflow-y: scroll;
+}
+
+.scrollable-teams {
+	overflow-y: scroll;
+	height: 80%;
+}
