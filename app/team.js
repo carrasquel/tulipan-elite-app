@@ -20,6 +20,7 @@ var team = new Tulipan({
   
       after: function(params, query){
         this.resetTeam();
+        this.resetGames();
         var teamId = params.id;
         var leagueId = this.$store.get('leagueId');
         this.progress = true;
@@ -80,6 +81,10 @@ var team = new Tulipan({
       resetTeam: function(){
         this.$set("team", {});
       },
+
+      resetGames: function(){
+        this.$set("games", []);
+      },
   
       selectGame: function(gameId){
         console.log(teamId);
@@ -96,6 +101,15 @@ var team = new Tulipan({
         else {
           return "";
         }
+      }
+    },
+    filters: {
+      lastsub: function(str, size){
+        return str.substr(-size);
+      },
+
+      firstsub: function(str, size){
+        return str.substring(0, size);
       }
     }
   });
